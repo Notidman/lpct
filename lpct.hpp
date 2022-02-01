@@ -5,7 +5,7 @@
  *|   LibName: LPCT // Cross-platform library for printing colored text    |*
  *|   License: MIT Licensed Library                                        |*
  *|   Author: Notidman                                                     |*
-\*|+---------------------------------| PERFECT |--------------------------+|*/
+\*|+---------------------------------| LPCT |-----------------------------+|*/
 
 
 namespace lpct {
@@ -38,7 +38,8 @@ namespace lpct {
 
     // The function to print text to the console with
     // certain color without line break
-    void color(colors color, std::string msg)
+    template < typename __T >
+    void color(colors color, const __T& msg)
     {
       HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -49,7 +50,8 @@ namespace lpct {
 
     // The function to print text to the console
     // of a certain color with a line break
-    void colorln(colors color, std::string msg)
+    template < typename __T >
+    void colorln(colors color, const __T& msg)
     {
       HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -57,7 +59,6 @@ namespace lpct {
       std::cout << msg << std::endl;
       SetConsoleTextAttribute(hConsole, 7);
     }
-
 
   #else // Linux, Mac
 
@@ -110,13 +111,15 @@ namespace lpct {
 
     // The function to print text to the console with
     // certain color without line break
-    void color(colors color, std::string msg) {
+    template < typename __T >
+    void color(colors color, const __T& msg) {
       std::cout << detail::get_color(color) << msg << "\033[0m";
     }
 
     // The function to print text to the console
     // of a certain color with a line break
-    void colorln(colors color, std::string msg) {
+    template < typename __T >
+    void colorln(colors color, const __T& msg) {
       std::cout << detail::get_color(color) << msg << "\033[0m" << std::endl;
     }
 
