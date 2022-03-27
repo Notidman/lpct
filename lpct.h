@@ -131,6 +131,33 @@ typedef enum colors
           "\033[0m");
     }
 
+    void 
+    prcolorch(colors_t color, const char ch) 
+    {
+      printf("%s%c%s", 
+          get_color(color),
+          ch,
+          "\033[0m");
+    }
+
+    void 
+    prcolorchln(colors_t color, const char ch) 
+    {
+      printf("%s%c%s\n", 
+          get_color(color),
+          ch,
+          "\033[0m");
+    }
+
+    void
+    get_colorstrch(char *str, colors_t color, const char ch)
+    {
+      sprintf(str, "%s%c%s", 
+          get_color(color),
+          ch,
+          "\033[0m");
+    }
+
 #endif
 
 #endif /* LPCT_H */
