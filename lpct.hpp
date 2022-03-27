@@ -1,4 +1,5 @@
-﻿#ifndef LPCT_HPP
+﻿#pragma once
+#ifndef LPCT_HPP
 #define LPCT_HPP
 
 /*|+----------------------------------------------------------------------+|*\
@@ -10,7 +11,7 @@
 
 namespace lpct {
 
-  #include <iostream>
+#include <iostream>
   
   enum class colors
   {
@@ -35,12 +36,12 @@ namespace lpct {
 #ifdef _WIN32 // Windows
   
   
-  #include <windows.h>
+#include <windows.h>
 
   // The function to print text to the console with
   // certain color without line break
-  template < typename TypeString >
-  void prcolor(colors color, const TypeString& msg)
+  template < typename TypeString > void 
+  prcolor(colors color, const TypeString& msg)
   {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -51,8 +52,8 @@ namespace lpct {
 
   // The function to print text to the console
   // of a certain color with a line break
-  template < typename TypeString >
-  void prcolorln(colors color, const TypeString& msg)
+  template < typename TypeString > void 
+  prcolorln(colors color, const TypeString& msg)
   {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -61,13 +62,15 @@ namespace lpct {
     SetConsoleTextAttribute(hConsole, static_cast<int>(colors::white));
   }
 
-  void set_color(colors color)
+  void 
+  set_color(colors color)
   {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hConsole, static_cast<int>(color));
   }
 
-  void uncolor()
+  void 
+  uncolor()
   {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hConsole, static_cast<int>(colors::white));
@@ -78,7 +81,8 @@ namespace lpct {
 
     namespace detail
     {
-      const char* get_color(colors color)
+      const char* 
+      get_color(colors color)
       {
         switch(color)
         {
@@ -105,25 +109,27 @@ namespace lpct {
 
     // The function to print text to the console with
     // certain color without line break
-    template < typename TypeString >
-    void prcolor(colors color, const TypeString& msg) {
+    template < typename TypeString > void
+    prcolor(colors color, const TypeString& msg) 
+    {
       std::cout << detail::get_color(color) << msg << "\033[0m";
     }
 
     // The function to print text to the console
     // of a certain color with a line break
-    template < typename TypeString >
-    void prcolorln(colors color, const TypeString& msg) {
+    template < typename TypeString > void 
+    prcolorln(colors color, const TypeString& msg) 
+    {
       std::cout << detail::get_color(color) << msg << "\033[0m" << std::endl;
     }
 
-    template < typename TypeString >
-    TypeString get_colorstr(colors color, TypeString&& msg)
+    template < typename TypeString > TypeString
+    get_colorstr(colors color, TypeString&& msg)
     {
       return detail::get_color(color) + msg + "\033[0m";
     }
 
-  #endif
+#endif
 
 } // namespace lpct
 
