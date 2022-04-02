@@ -1,35 +1,4 @@
-#pragma once
-#ifndef LPCT_H
-#define LPCT_H
-
-/*|+----------------------------------------------------------------------+|*\
- *|   LibName: LPCT // Cross-platform library for printing colored text    |*
- *|   License: MIT Licensed Library                                        |*
- *|   Author: Notidman                                                     |*
-\*|+---------------------------------| LPCT |-----------------------------+|*/
-
-#include <stdio.h>
-
-
-typedef enum colors
-{
-  black = 0,
-  blue = 1,
-  green = 2,
-  cyan = 3,
-  red = 4,
-  magenta = 5,
-  yellow = 6,
-  white = 7,
-  bright_black = 8,
-  bright_blue = 9,
-  bright_green = 10,
-  bright_cyan = 11,
-  bright_red = 12,
-  bright_magenta = 13,
-  bright_yellow = 14,
-  bright_white = 15,
-} colors_t;
+#include "lpct.h"
 
 #ifdef _WIN32 /* Windows */
 
@@ -159,5 +128,3 @@ typedef enum colors
     }
 
 #endif
-
-#endif /* LPCT_H */
