@@ -6,30 +6,6 @@ namespace lpct {
   
 #include <windows.h>
 
-  // The function to print text to the console with
-  // certain color without line break
-  template < typename TypeString > void 
-  prcolor(colors color, const TypeString& msg)
-  {
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-
-    SetConsoleTextAttribute(hConsole, static_cast<int>(color));
-    std::cout << msg;
-    SetConsoleTextAttribute(hConsole, static_cast<int>(colors::white));
-  }
-
-  // The function to print text to the console
-  // of a certain color with a line break
-  template < typename TypeString > void 
-  prcolorln(colors color, const TypeString& msg)
-  {
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-
-    SetConsoleTextAttribute(hConsole, static_cast<int>(color));
-    std::cout << msg << std::endl;
-    SetConsoleTextAttribute(hConsole, static_cast<int>(colors::white));
-  }
-
   void 
   set_color(colors color)
   {
@@ -75,27 +51,6 @@ namespace lpct {
       }
     } // namespace detail
 
-    // The function to print text to the console with
-    // certain color without line break
-    template < typename TypeString > void
-    prcolor(colors color, const TypeString& msg) 
-    {
-      std::cout << detail::get_color(color) << msg << "\033[0m";
-    }
-
-    // The function to print text to the console
-    // of a certain color with a line break
-    template < typename TypeString > void 
-    prcolorln(colors color, const TypeString& msg) 
-    {
-      std::cout << detail::get_color(color) << msg << "\033[0m" << std::endl;
-    }
-
-    template < typename TypeString > TypeString
-    get_colorstr(colors color, TypeString&& msg)
-    {
-      return detail::get_color(color) + msg + "\033[0m";
-    }
 
 #endif
 

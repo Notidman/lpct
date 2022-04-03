@@ -53,30 +53,30 @@ typedef enum colors
 
 #else // Linux, Mac
 
-    const char* 
-    get_color(colors_t color);
+  const char* 
+  get_color(colors_t color);
 
-    // The function to print text to the console with
-    // certain color without line break
-    void
-    prcolor(colors_t color, const char *msg);
+  // The function to print text to the console with
+  // certain color without line break
+  void
+  prcolor(colors_t color, const char *msg);
 
-    // The function to print text to the console
-    // of a certain color with a line break
-    void 
-    prcolorln(colors_t color, const char *msg); 
+  // The function to print text to the console
+  // of a certain color with a line break
+  void 
+  prcolorln(colors_t color, const char *msg); 
 
-    void
-    get_colorstr(char *str, colors_t color, const char *msg);
+  void
+  get_colorstr(char *str, colors_t color, const char *msg);
 
-    void 
-    prcolorch(colors_t color, const char ch); 
+  void 
+  prcolorch(colors_t color, const char ch); 
 
-    void 
-    prcolorchln(colors_t color, const char ch);
+  void 
+  prcolorchln(colors_t color, const char ch);
 
-    void
-    get_colorstrch(char *str, colors_t color, const char ch);
+  void
+  get_colorstrch(char *str, colors_t color, const char ch);
 
 #endif
 
